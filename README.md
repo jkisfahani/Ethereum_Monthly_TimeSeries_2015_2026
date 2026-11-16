@@ -145,6 +145,10 @@ The model incorporated ordinary and seasonal differencing to account for the tem
 
 These modelling results are exploratory. Residual non-normality and other diagnostic limitations require consideration before treating the models as validated forecasting tools.
 
+### 4.11 Comprehensive Monthly Report
+
+The full report is available at [`reports/10_comprehensive_monthly_time_series_analysis.md`](reports/10_comprehensive_monthly_time_series_analysis.md). It documents the monthly dataset, descriptive statistics, growth analysis, calendar-month comparisons, decomposition, stationarity tests, ARIMA comparison, preliminary SARIMA results, diagnostics, and study limitations.
+
 ## 5. Quarterly Time-Series Analysis
 
 **Notebook:** `02_Ethereum_Quarterly_TimeSeries_Analysis.ipynb`
