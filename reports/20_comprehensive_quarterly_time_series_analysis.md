@@ -57,7 +57,7 @@ series at quarter starts (`QS`) and summing the monthly transaction
 counts. The analysis retained only quarters containing all three months.
 The resulting quarterly dataset is:
 
-`data/processed/ethereum_quarterly_txcount_2015_2026.csv`
+`data/processed/ethereum_txcount_2015_2026.csv`
 
 The quarterly dataset contains **44 observations**, from **Q4 2015 to Q3
 2026**. The continuity check found:
@@ -236,11 +236,17 @@ decline in Q3 2026.
 
 ### 3.5 Descriptive visualizations
 
-The notebook saved:
+**Figure 1. Quarterly transaction count**
 
--   `visualizations/01_quarterly_transaction_count.png`
--   `visualizations/02_quarterly_qoq_growth.png`
--   `visualizations/03_quarterly_yoy_growth.png`
+![Figure 1. Quarterly transaction count](../visualizations/quarterly/quarterly_01_transaction_count.png)
+
+**Figure 2. Quarter-over-quarter growth**
+
+![Figure 2. Quarter-over-quarter growth](../visualizations/quarterly/quarterly_02_qoq_growth.png)
+
+**Figure 3. Year-over-year growth**
+
+![Figure 3. Year-over-year growth](../visualizations/quarterly/quarterly_03_yoy_growth.png)
 
 ## 4. Seasonal analysis and decomposition
 
@@ -311,9 +317,15 @@ significant evidence in this sample.
 
 The analysis saved:
 
--   `visualizations/04_quarterly_seasonal_indices.png`
--   `visualizations/05_detrended_quarterly_activity.png`
--   `data/processed/ethereum_detrended_quarterly_summary.csv`
+**Figure 4. Preliminary quarterly seasonal indices**
+
+![Figure 4. Quarterly seasonal indices](../visualizations/quarterly/quarterly_04_seasonal_indices.png)
+
+**Figure 5. Detrended quarterly activity**
+
+![Figure 5. Detrended quarterly activity](../visualizations/quarterly/quarterly_05_detrended_activity.png)
+
+The processed summary is available at `data/processed/ethereum_detrended_summary.csv`.
 
 ### 4.3 Classical decomposition
 
@@ -321,7 +333,9 @@ The quarterly series was decomposed using classical additive
 decomposition with a seasonal period of four quarters. The decomposition
 visualization was saved as:
 
--   `visualizations/06_quarterly_time_series_decomposition.png`
+**Figure 6. Classical quarterly time-series decomposition**
+
+![Figure 6. Quarterly time-series decomposition](../visualizations/quarterly/quarterly_06_time_series_decomposition.png)
 
 The decomposition residuals had 40 usable observations, a mean of
 approximately -173,108, and a standard deviation of approximately
@@ -339,8 +353,9 @@ tested lags. This result applies to the decomposition residuals and
 should not be confused with the separate autocorrelation diagnostics for
 the empirical regression.
 
-The residual visualization was saved as
-`visualizations/07_quarterly_decomposition_residuals.png`.
+**Figure 7. Quarterly decomposition residuals**
+
+![Figure 7. Quarterly decomposition residuals](../visualizations/quarterly/quarterly_07_decomposition_residuals.png)
 
 ## 5. Stationarity and transformations
 
@@ -374,8 +389,13 @@ stationary under the reported test specification.
 
 The first-difference and ACF/PACF visualizations were saved as:
 
--   `visualizations/08_quarterly_first_difference.png`
--   `visualizations/09_quarterly_acf_pacf.png`
+**Figure 8. First-differenced quarterly transaction series**
+
+![Figure 8. Quarterly first difference](../visualizations/quarterly/quarterly_08_first_difference.png)
+
+**Figure 9. ACF and PACF of first differences**
+
+![Figure 9. Quarterly ACF and PACF](../visualizations/quarterly/quarterly_09_acf_pacf.png)
 
 ### 5.3 Log-transformed series
 
@@ -396,8 +416,13 @@ particular regression or forecasting model is correctly specified.
 
 The log-series and its ACF/PACF visualization were saved as:
 
--   `visualizations/11_quarterly_log_transformation.png`
--   `visualizations/12_quarterly_log_acf_pacf.png`
+**Figure 10. Log-transformed quarterly transaction series**
+
+![Figure 10. Quarterly log transformation](../visualizations/quarterly/quarterly_10_log_transformation.png)
+
+**Figure 11. ACF and PACF of the log-transformed series**
+
+![Figure 11. Quarterly log ACF and PACF](../visualizations/quarterly/quarterly_11_log_acf_pacf.png)
 
 ## 6. ARIMA and ARMA modelling
 
@@ -445,8 +470,15 @@ The seasonal naïve model performed best among these initial candidates,
 although its errors were close to those of ARIMA(0,1,0).
 
 The comparison was saved as
-`data/processed/ethereum_quarterly_forecast_comparison.csv`, and the
-chart as `visualizations/10_quarterly_forecast_comparison.png`.
+`data/processed/ethereum_forecast_comparison.csv`.
+
+**Figure 12. Fixed-origin ARIMA forecast comparison**
+
+![Figure 12. Quarterly forecast comparison](../visualizations/quarterly/quarterly_12_forecast_comparison.png)
+
+**Figure 13. Quarterly growth rate and holdout-period marker**
+
+![Figure 13. Quarterly growth rate with holdout period](../visualizations/quarterly/quarterly_13_growth_rate.png)
 
 ### 6.3 ARIMA(0,1,0) with drift
 
@@ -514,8 +546,9 @@ linear trend substantially overpredicted, while the quadratic
 specification produced declining forecasts that were far below actual
 observations.
 
-The quadratic comparison chart was saved as
-`visualizations/15_quadratic_trend_forecast_comparison.png`.
+**Figure 14. Quadratic trend forecast comparison**
+
+![Figure 14. Quadratic trend forecast comparison](../visualizations/quarterly/quarterly_14_quadratic_trend_forecast_comparison.png)
 
 ### 7.2 Piecewise linear trend
 
@@ -561,8 +594,9 @@ Fixed-origin accuracy:
 This was considerably better than the linear and quadratic trend models
 in the fixed-origin comparison.
 
-The piecewise model visualization was saved as
-`visualizations/16_piecewise_linear_trend.png`.
+**Figure 15. Piecewise linear trend**
+
+![Figure 15. Piecewise linear trend](../visualizations/quarterly/quarterly_15_piecewise_linear_trend.png)
 
 ### 7.3 Logarithmic time trend
 
@@ -628,6 +662,11 @@ benchmark in the reported evaluations.
 The piecewise linear trend was the strongest of these trend
 specifications in the fixed-origin holdout evaluation.
 
+
+**Figure 16. Forecast model comparison**
+
+![Figure 16. Forecast model comparison](../visualizations/quarterly/quarterly_16_trend_forecast_model_comparison.png)
+
 ## 8. Rolling-origin forecast validation
 
 A one-quarter-ahead rolling-origin evaluation was conducted over the
@@ -671,8 +710,9 @@ Selected quarter-by-quarter absolute percentage errors:
 The naïve forecast was not best in every individual quarter, but its
 aggregate rolling-origin accuracy was strongest.
 
-The rolling-origin visualization was saved as
-`visualizations/17_rolling_origin_forecast_comparison.png`.
+**Figure 17. Rolling-origin forecast comparison**
+
+![Figure 17. Rolling-origin forecast comparison](../visualizations/quarterly/quarterly_17_rolling_origin_forecast_comparison.png)
 
 **Forecasting conclusion:** The preferred benchmark for this sample and
 one-quarter-ahead task is the naïve model. The piecewise linear trend is
@@ -1029,12 +1069,11 @@ evidence of parameter instability in this model over the available
 sample, although the result does not prove that the coefficient will
 remain unchanged in future periods.
 
-The relationship visualization was saved as:
+The relationship visualization plots quarterly active-address log changes against quarterly transaction-count log changes, with an OLS fitted line.
 
-`visualizations/18_transaction_vs_active_address_growth.png`
+**Figure 18. Transaction growth versus active-address growth**
 
-It plots quarterly active-address log changes against quarterly
-transaction-count log changes, with an OLS fitted line.
+![Figure 18. Transaction growth versus active-address growth](../visualizations/quarterly/quarterly_18_transaction_vs_active_address_growth.png)
 
 ## 11. Overall interpretation
 
@@ -1154,33 +1193,33 @@ The following visualizations were produced by the notebook:
   -----------------------------------------------------------------------------------
   File                                            Description
   ----------------------------------------------- -----------------------------------
-  `01_quarterly_transaction_count.png`            Quarterly transaction-count series
+  `01_transaction_count.png`            Quarterly transaction-count series
 
-  `02_quarterly_qoq_growth.png`                   Quarter-over-quarter growth
+  `02_qoq_growth.png`                   Quarter-over-quarter growth
 
-  `03_quarterly_yoy_growth.png`                   Year-over-year growth
+  `03_yoy_growth.png`                   Year-over-year growth
 
-  `04_quarterly_seasonal_indices.png`             Preliminary seasonal indices
+  `04_seasonal_indices.png`             Preliminary seasonal indices
 
-  `05_detrended_quarterly_activity.png`           Detrended quarterly activity
+  `05_detrended_activity.png`           Detrended quarterly activity
 
-  `06_quarterly_time_series_decomposition.png`    Classical quarterly decomposition
+  `06_time_series_decomposition.png`    Classical quarterly decomposition
 
-  `07_quarterly_decomposition_residuals.png`      Decomposition residuals
+  `07_decomposition_residuals.png`      Decomposition residuals
 
-  `08_quarterly_first_difference.png`             First-differenced transaction
+  `08_first_difference.png`             First-differenced transaction
                                                   series
 
-  `09_quarterly_acf_pacf.png`                     ACF/PACF of first differences
+  `09_acf_pacf.png`                     ACF/PACF of first differences
 
-  `10_quarterly_forecast_comparison.png`          ARIMA forecast comparison; updated
+  `10_forecast_comparison.png`          ARIMA forecast comparison; updated
                                                   with the drift model
 
-  `11_quarterly_log_transformation.png`           Log-transformed quarterly series
+  `11_log_transformation.png`           Log-transformed quarterly series
 
-  `12_quarterly_log_acf_pacf.png`                 ACF/PACF of log series
+  `12_log_acf_pacf.png`                 ACF/PACF of log series
 
-  `13_quarterly_growth_rate.png`                  Quarterly growth rate with
+  `13_growth_rate.png`                  Quarterly growth rate with
                                                   holdout-period marker
 
   `15_quadratic_trend_forecast_comparison.png`    Quadratic trend forecast comparison
@@ -1196,9 +1235,9 @@ The following visualizations were produced by the notebook:
 Related processed outputs include:
 
 -   `data/processed/ethereum_monthly_txcount_2015_2026.csv`
--   `data/processed/ethereum_quarterly_txcount_2015_2026.csv`
--   `data/processed/ethereum_detrended_quarterly_summary.csv`
--   `data/processed/ethereum_quarterly_forecast_comparison.csv`
+-   `data/processed/ethereum_txcount_2015_2026.csv`
+-   `data/processed/ethereum_detrended_summary.csv`
+-   `data/processed/ethereum_forecast_comparison.csv`
 
 ## 14. Final conclusion
 
